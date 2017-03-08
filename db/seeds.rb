@@ -5,3 +5,12 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+
+bike = 0
+100.times do
+  p 'in the loop'
+  bike = Product.new({name: Faker::Space.star_cluster, brand: Faker::Space.moon, description: Faker::Hipster.paragraph(2), price: "$"+Faker::Commerce.price.to_s, rating: (3+rand(7)).to_s+"."+(1+rand(9)).to_s})
+  bike.save
+end
+
