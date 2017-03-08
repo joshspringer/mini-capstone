@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
 
-  def products_page
+  def all_products
+    @products = Product.all
     render "all_products.html.erb"
   end
 

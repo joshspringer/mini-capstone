@@ -1,1 +1,9 @@
-<p> All Products Below </p>
+<h2> All Products Below </h2>
+
+<% @products.each do |product| %>
+  <h2>------------</h2>
+  <p>name: <%= product.name %></p>
+  <p>brand: <%= product.brand %></p>
+  <p>description: <%= product.description %></p>
+  <p>price: <%= product.price %></p>
+<% end %>
