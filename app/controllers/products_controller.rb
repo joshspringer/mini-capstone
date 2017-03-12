@@ -17,7 +17,19 @@ class ProductsController < ApplicationController
   end
 
   def new
-
     render "new.html.erb"
+  end
+
+  def create
+    # take in params and add to database
+    @product = Product.new(
+      name: params['form_name'],
+      brand: params['form_brand'],
+      description: params['form_description'],
+      price: params['form_price']
+      )
+    @product.save
+    # show a view with the info the user entered
+    render 'create.html.erb'
   end
 end
