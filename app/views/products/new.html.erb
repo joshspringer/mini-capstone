@@ -1,0 +1,23 @@
+<h3>Add a new product</h3>
+<%= form_tag "/products", method: :post do %>
+<div>
+<label anme="form_name">Name: </label>
+<input type="text" name="form_name">
+</div>
+<div>
+<label anme="form_brand">Brand: </label>
+<input type="text" name="form_brand">
+</div>
+<div>
+<label anme="form_description">Description: </label>
+<input type="text" name="form_description">
+</div>
+<div>
+<label anme="form_price">Price: </label>
+<input type="text" name="form_price">
+</div>
+<div>
+<input type="submit" name="Submit">
+</div>
+
+<% end %>
