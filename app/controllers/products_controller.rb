@@ -49,4 +49,11 @@ class ProductsController < ApplicationController
     @product.save
     render 'update.html.erb'
   end
+
+  def destroy
+    @product = Product.find(params[:id])
+    @id = @product.id
+    @product.destroy
+    render 'destroy.html.erb'
+  end
 end

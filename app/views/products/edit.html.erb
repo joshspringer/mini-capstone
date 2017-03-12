@@ -35,3 +35,10 @@
   </div>
 </form>
 <% end %>
+
+<%= form_tag "/products/#{@product.id}", method: :delete do %>
+<input type="submit" value="DELETE"
+  </div>
+<% end %>
+
+<!-- try to add new button using button_to -->
