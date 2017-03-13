@@ -30,7 +30,7 @@ class ProductsController < ApplicationController
     )
     @product.save
     # show a view with the info the user entered
-    render 'create.html.erb'
+    redirect_to "/products/#{@product.id}"
   end
 
   def edit
@@ -54,6 +54,6 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @id = @product.id
     @product.destroy
-    render 'destroy.html.erb'
+    redirect_to "/products"
   end
 end
