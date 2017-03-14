@@ -1,12 +1,16 @@
 <h2> All Products Below </h2>
 <h4><a href="/products/new">Add new product</a></h4>
 
+
 <% @products.each do |product| %>
-  <h2>------------</h2>
+  <div class='col-md-4'>
+  <div class="well well-lg" width="100%" >
   <h4><a href="/products/<%= product.id %>" > <%= product.brand %> <%= product.name %> </a></h4>
   <p>name: <%= product.name %></p>
   <p>brand: <%= product.brand %></p>
   <p>description: <%= product.description %></p>
   <p>price: <%= product.price %></p>
+  </div>
+  </div>
 <% end %>
 

@@ -23,7 +23,7 @@ class ProductsController < ApplicationController
       price: params['form_price']
     )
     @product.save
-    # show a view with the info the user entered
+    flash[:success] = "You just created a new product"
     redirect_to "/products/#{@product.id}"
   end
 
@@ -41,6 +41,7 @@ class ProductsController < ApplicationController
       price: params['form_price']
     )
     @product.save
+    flash[:info] = "You just edited a product"
     redirect_to "/products/#{@product.id}"
   end
 
@@ -48,6 +49,7 @@ class ProductsController < ApplicationController
     @product = Product.find(params[:id])
     @id = @product.id
     @product.destroy
+    flash[:danger] = "You just deleted something"
     redirect_to "/products"
   end
 end

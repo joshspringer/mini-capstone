@@ -1,12 +1,20 @@
-<h3> Product info: </h3>
+<div class="well well-lg">
+  <h3> Product info: </h3>
+
   <p>name: <%= @product.name %></p>
   <p>brand: <%= @product.brand %></p>
   <p>description: <%= @product.description %></p>
   <p>price: <%= @product.price %></p>
 
   <p><a href="/products/<%=@product.id%>/edit">Edit product info</a></p>
-
+</div>
 <%= form_tag "/products/#{@product.id}", method: :delete do %>
-<input type="submit" value="DELETE"
+  <div class="form-group">
+    <div class="col-sm-offset-2 col-sm-10">
+      <button type="submit" class="btn btn-danger">Delete</button>
+    </div>
   </div>
 <% end %>
+
+
+<p><a href="/products/"> << Back to index</a></p>
