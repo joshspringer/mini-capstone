@@ -47,7 +47,7 @@ class ProductsController < ApplicationController
       price: params['form_price']
     )
     @product.save
-    render 'update.html.erb'
+    redirect_to "/products/#{@product.id}"
   end
 
   def destroy
