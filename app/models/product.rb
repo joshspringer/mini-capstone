@@ -1,4 +1,8 @@
+
 class Product < ApplicationRecord
+  # must have suppliers table with supplier_id
+  belongs_to :supplier
+
   def bulleted_description
     return description.split(". ")
   end
@@ -22,8 +26,9 @@ class Product < ApplicationRecord
     price * 1.09
   end
 
-  def supplier
-    Supplier.find_by(id: supplier_id)
-  end
+  # same as belongs_to method
+  # def supplier
+  #   Supplier.find_by(id: supplier_id)
+  # end
 
 end
