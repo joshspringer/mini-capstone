@@ -1,16 +1,29 @@
 <h2> All Products Below </h2>
 <h4><a href="/products/new">Add new product</a></h4>
 
+<p><a href="/products?sort=price_asc">All products by price (ascending)</a></p>
+<p><a href="/products?sort=price_desc">All products by price (descending)</a></p>
 
-<% @products.each do |product| %>
-  <div class='col-md-4'>
-  <div class="well well-lg" width="100%" >
-  <h4><a href="/products/<%= product.id %>" > <%= product.brand %> <%= product.name %> </a></h4>
-  <p>name: <%= product.name %></p>
-  <p>brand: <%= product.brand %></p>
-  <p>description: <%= product.description %></p>
-  <p>price: <%= product.price %></p>
-  </div>
-  </div>
+<% @products.each_slice(3) do |three_products| %>
+<div class='row'>
+  <% three_products.each do |product| %>
+    <div class='col-md-4'>
+      <div class="well well-lg" width="100%" >
+        <h4><a href="/products/<%= product.id %>" > <%= product.brand %> <%= product.name %> </a></h4>
+        <p><b>Name: </b><%= product.name %></p>
+        <p><b>Brand: </b><%= product.brand %></p>
+        <p><b>Description: </b></p>
+        <ul>
+        <% product.bulleted_description.each do |sentence| %>
+          <p><li><%= sentence %></li><p>
+        <% end %>
+        </ul>
+        <p><b>Price: </b><%= product.price %></p>
+        <p><b>Created on: </b><%= product.standard_time %> </p>
+      </div>
+    </div>
+  <% end %>
+</div>
 <% end %>
+
 

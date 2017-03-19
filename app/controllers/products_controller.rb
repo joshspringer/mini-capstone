@@ -1,12 +1,26 @@
 class ProductsController < ApplicationController
   def index
-    @products = Product.all
+    if params['sort'] == 'price_asc'
+      @products = Product.all.order(price: :asc)
+    elsif params['sort'] == 'price_desc'
+      @products = Product.all.order(price: :desc)
+    elsif params['section'] == 'sale'
+      @products = Product.where("price < ?", 20)
+    elsif params['q']
+      @products = Product.where("name LIKE ?", "%#{params[:q]}%")
+    else
+      @products = Product.all
+    end
     render 'index.html.erb'
   end
 
   def show
-    @product = Product.find_by(id: params[:id])
-
+    if params[:id] == 'random'
+      # @product = Product.all.shuffle.first
+      @product = Product.all.sample
+    else
+      @product = Product.find_by(id: params[:id])
+    end
     render 'show.html.erb'
   end
 

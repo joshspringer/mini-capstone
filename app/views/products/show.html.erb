@@ -4,7 +4,10 @@
   <p>name: <%= @product.name %></p>
   <p>brand: <%= @product.brand %></p>
   <p>description: <%= @product.description %></p>
-  <p>price: <%= @product.price %></p>
+  <p>price: <%= number_to_currency(@product.price) %></p>
+  <p>tax: <%= number_to_currency(@product.tax) %> </p>
+  <p>total: <%= number_to_currency(@product.total) %> </p>
+  <p class="sale" ><%= @product.sale_message %> </p>
 
   <p><a href="/products/<%=@product.id%>/edit">Edit product info</a></p>
 </div>
