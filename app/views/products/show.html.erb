@@ -9,8 +9,13 @@
   <p>tax: <%= number_to_currency(@product.tax) %> </p>
   <p>total: <%= number_to_currency(@product.total) %> </p>
   <p class="sale" ><%= @product.sale_message %> </p>
-  <p> <%= @image.url %> </p>
-  <p> image id: <%= @image.id %> </p>
+
+<!-- image carousel -->
+<% @product.images.each do |image| %>
+<img src="<%= image.url %>">
+<% end %>
+<!-- end of carousel -->
+
 
   <p><a href="/products/<%=@product.id%>/edit">Edit product info</a></p>
 </div>
@@ -24,3 +29,5 @@
 
 
 <p><a href="/products/"> << Back to index</a></p>
+
+
