@@ -18,8 +18,10 @@
           <p><li><%= sentence %></li><p>
         <% end %>
         </ul>
-        <p><b>Price: </b><%= product.price %></p>
+        <p><b>Price: $</b><%= product.price %></p>
         <p><b>Created on: </b><%= product.standard_time %> </p>
+        <p><%= product.images.first %></p>
+        <%= Image.where(product_id: product.id).first %>
       </div>
     </div>
   <% end %>

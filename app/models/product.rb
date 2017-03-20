@@ -2,6 +2,7 @@
 class Product < ApplicationRecord
   # must have suppliers table with supplier_id
   belongs_to :supplier
+  has_many :images
 
   def bulleted_description
     return description.split(". ")
@@ -29,6 +30,11 @@ class Product < ApplicationRecord
   # same as belongs_to method
   # def supplier
   #   Supplier.find_by(id: supplier_id)
+  # end
+
+  # same as has_many method
+  # def images
+  #   Image.where(product_id: id)
   # end
 
 end
