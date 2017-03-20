@@ -1,3 +1,4 @@
+
 class ProductsController < ApplicationController
   def index
     if params['sort'] == 'price_asc'
@@ -11,6 +12,11 @@ class ProductsController < ApplicationController
     else
       @products = Product.all
     end
+    @new_array = []
+    @products.each do |product|
+      image = Image.find_by(product_id: product.id)
+      @new_array << image
+    end
     render 'index.html.erb'
   end
 
@@ -21,6 +27,7 @@ class ProductsController < ApplicationController
     else
       @product = Product.find_by(id: params[:id])
     end
+    @image = Image.find_by(id: @product.id)
     render 'show.html.erb'
   end
 

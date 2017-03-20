@@ -1,3 +1,4 @@
+
 <h2> All Products Below </h2>
 <h4><a href="/products/new">Add new product</a></h4>
 
@@ -20,8 +21,8 @@
         </ul>
         <p><b>Price: $</b><%= product.price %></p>
         <p><b>Created on: </b><%= product.standard_time %> </p>
-        <p><%= product.images.first %></p>
-        <%= Image.where(product_id: product.id).first %>
+        <img src= "<%= Image.find_by(product_id: product.id).url %>">
+        <p> image id: <%=Image.find_by(product_id: product.id).id%></p>
       </div>
     </div>
   <% end %>

@@ -14,9 +14,8 @@
 #   bike.save
 # end
 
-5.times do
+Product.all.each do |product|
   p 'creating image'
-  image = Image.new({url: Faker::Placeholdit.image("300x250", 'jpg'), product_id: 7})
+  image = Image.new({url: Faker::Placeholdit.image("300x250", 'jpg'), product_id: product.id})
   image.save
 end
-
