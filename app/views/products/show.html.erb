@@ -13,6 +13,7 @@
 <!-- image carousel -->
 <% @product.images.each do |image| %>
 <img src="<%= image.url %>">
+<p><%= image.id %></p>
 <% end %>
 <!-- end of carousel -->
 

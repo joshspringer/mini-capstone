@@ -26,16 +26,19 @@ class ProductsController < ApplicationController
   end
 
   def new
+    @suppliers = Supplier.all
     render 'new.html.erb'
   end
 
   def create
     # take in params and add to database
+    # Product.create does not require @product.save
     @product = Product.new(
       name: params['form_name'],
       brand: params['form_brand'],
       description: params['form_description'],
-      price: params['form_price']
+      price: params['form_price'],
+      supplier_id: params['form_supplier_id']
     )
     @product.save
     flash[:success] = "You just created a new product"
