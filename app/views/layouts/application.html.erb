@@ -31,9 +31,14 @@
      </div><!-- /.col-lg-6 -->
     <% end %>
   </div>
-
 </div><!-- /.row -->
 </nav>
+
+<!-- user greeting for logged-in user -->
+<% if session[:user_id] %>
+Hi, <%= current_user.username %>
+<% end %>
+
   <% flash.each do |name, message| %>
       <div class="alert alert-<%=name%>" alert-dismissable>
       <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>

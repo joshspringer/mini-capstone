@@ -11,5 +11,10 @@ Rails.application.routes.draw do
   patch 'products/:id' => 'products#update'
   delete 'products/:id' => 'products#destroy'
 
-  # make a route that the form will post to
+  get '/signup' => 'users#new'
+  post '/users' => 'users#create'
+
+  get '/login' => 'sessions#new'
+  post '/login' => 'sessions#create'
+  get '/logout' => 'sessions#destroy'
 end
