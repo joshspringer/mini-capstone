@@ -19,9 +19,15 @@
       <li><a href="#">Page 1</a></li>
       <li><a href="/products/random">Random Product</a></li>
       <li><a href="/products?section=sale">Discount Items</a></li>
+      <% if current_user %>
+      <li><a href="/logout">Log Out</a></li>
+      <% else  %>
+      <li><a href="/signup">Sign Up</a></li>
+      <li><a href="/login">Log In</a></li>
+      <% end %>
     </ul>
     <%= form_tag "/products", method: :get do %>
-     <div class="col-lg-4">
+     <div class="col-lg-3">
        <div class="input-group">
          <input type="text" class="form-control" placeholder="Search for..." name="q"> 
          <span class="input-group-btn">

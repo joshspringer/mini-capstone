@@ -2,6 +2,7 @@
 class Product < ApplicationRecord
   # must have suppliers table with supplier_id
   belongs_to :supplier
+  has_many :order
   has_many :images
 
   def bulleted_description
