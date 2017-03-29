@@ -19,13 +19,12 @@
           <p><li><%= sentence %></li><p>
         <% end %>
         </ul>
-        <p><b>Price: $</b><%= product.price %></p>
+        <p><b>Price: </b><%= number_to_currency(product.price) %></p>
         <p><b>Created on: </b><%= product.standard_time %> </p>
         <!-- two options for same thing (first is preferred) -->
         <img src="<%=product.images.first.url%>">
-        <img src= "<%= Image.find_by(product_id: product.id).url %>">
         <p> image id: <%=product.images.first.id%></p>
-        <p> image id: <%=Image.find_by(product_id: product.id).id%></p>
+
       </div>
     </div>
   <% end %>

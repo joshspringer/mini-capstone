@@ -1,0 +1,23 @@
+<h2>Here is your cart!</h2>
+<% @subtotal = 0 %>
+<% @tax = 0 %>
+<% @total = 0 %>
+<% @carted_products.each do |carted_product| %>
+<p><%= carted_product.product.name %>: <%= carted_product.quantity %> x <%= number_to_currency(carted_product.product.price) %> 
+<%= form_tag '/remove', method: :post do %>
+<button type="submit" class="btn btn-danger">Remove</button>
+<input type='hidden' name='product_id' value="<%= carted_product.product_id %>">
+<% end  %></p>
+<% @subtotal += (carted_product.product.price * carted_product.quantity) %>
+<% @tax += (carted_product.product.tax * carted_product.quantity)  %>
+<% @total = (@subtotal + @tax) %>
+
+<% end %>
+<p>-----------------------------------</p>
+<p>Subtotal: <%=number_to_currency(@subtotal) %></p>
+<p>Tax: <%=number_to_currency(@tax) %></p>
+<p>Total: <%=number_to_currency(@total) %></p>
+
+<%= form_tag '/order', method: :post do %>
+<button type="submit" class="btn btn-primary">Place Order</button>
+<% end  %>

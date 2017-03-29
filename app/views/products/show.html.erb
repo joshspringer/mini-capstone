@@ -3,6 +3,9 @@
 
   <p>name: <%= @product.name %></p>
   <p>brand: <%= @product.brand %></p>
+  <p>categories: <% @product.categories.each do |category| %> 
+    <a href="/products?category=<%= category.id %>"> <%= category.name %></a>
+  <% end %></p>
   <p>supplier: <%= @product.supplier.name %></p>
   <p>description: <%= @product.description %></p>
   <p>price: <%= number_to_currency(@product.price) %></p>
@@ -10,8 +13,8 @@
   <p>total: <%= number_to_currency(@product.total) %> </p>
   <p class="sale" ><%= @product.sale_message %> </p>
 
-<%= form_tag '/orders', method: :post do %>
-<p>Quantity: <input type="text" name="quantity"><button type="submit">Buy it!</button></p>
+<%= form_tag '/cart', method: :post do %>
+<p>Quantity: <input type="text" name="quantity"><button type="submit">Add to Cart</button></p>
  <input type="hidden" name="product_id" value="<%= @product.id %>">
 <% end %>
 

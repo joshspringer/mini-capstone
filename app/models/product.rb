@@ -1,9 +1,12 @@
 
 class Product < ApplicationRecord
   # must have suppliers table with supplier_id
+  has_many :categorized_products
+  has_many :categories, through: :categorized_products
   belongs_to :supplier
   has_many :order
   has_many :images
+  has_many :carted_products
 
   def bulleted_description
     return description.split(". ")

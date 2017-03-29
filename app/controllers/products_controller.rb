@@ -12,6 +12,15 @@ class ProductsController < ApplicationController
     else
       @products = Product.all
     end
+
+    if params[:category]
+      p 'category_id passed'
+      @products = Category.find_by(id: params[:category]).products
+    else
+      p 'category_id not passed'
+      @products = Product.all
+    end
+
     render 'index.html.erb'
   end
 
@@ -21,6 +30,7 @@ class ProductsController < ApplicationController
       @product = Product.all.sample
     else
       @product = Product.find_by(id: params[:id])
+      @categories = @product.categories
     end
     render 'show.html.erb'
   end

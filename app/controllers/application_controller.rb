@@ -9,6 +9,11 @@ class ApplicationController < ActionController::Base
   # helper_method allows you to use this method in the view (without it, only available in controllers)
   helper_method :current_user
 
+  def all_categories
+    @categories = Category.all
+  end
+  helper_method :all_categories
+
   def authenticate_user!
     redirect_to '/login' unless current_user
   end

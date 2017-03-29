@@ -16,7 +16,20 @@
     </div>
     <ul class="nav navbar-nav">
       <li class="active"><a href="/products">Home</a></li>
-      <li><a href="#">Page 1</a></li>
+      <li> 
+          <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+        Categories
+        <span class="caret"></span>
+        </button>
+        <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+          <% all_categories.each do |category|%>
+          <li><a href="/products?category=<%= category.id %>"><%= category.name %></a></li>
+          <% end %>
+          <li role="separator" class="divider"></li>
+          <li><a href="#">Separated link</a></li>
+        </ul>
+      </li>
+      <li><a href="/cart">Cart</a></li>
       <li><a href="/products/random">Random Product</a></li>
       <li><a href="/products?section=sale">Discount Items</a></li>
       <% if current_user %>
